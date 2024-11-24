@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-10-16T12:20:54.834364997Z</date>
+  <millis>1729081254834</millis>
+  <nanos>364997</nanos>
+  <sequence>0</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.app.SimulatorApplication</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.app.SimulatorApplication</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Starting the robot simulator...</message>
+</record>
+<record>
+  <date>2024-10-16T12:20:54.876132445Z</date>
+  <millis>1729081254876</millis>
+  <nanos>132445</nanos>
+  <sequence>1</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.app.SimulatorApplication</logger>
+  <level>CONFIG</level>
+  <class>fr.tp.inf112.projects.robotsim.app.SimulatorApplication</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>With parameters [].</message>
+</record>
+<record>
+  <date>2024-10-16T12:20:54.933564812Z</date>
+  <millis>1729081254933</millis>
+  <nanos>564812</nanos>
+  <sequence>2</sequence>
+  <logger>sun.awt.X11.backingStore.XToolkit</logger>
+  <level>CONFIG</level>
+  <class>sun.awt.X11.XToolkit</class>
+  <method>setBackingStoreType</method>
+  <thread>1</thread>
+  <message>The system property sun.awt.backingStore is not set, by default backingStore=NotUseful</message>
+</record>
+</log>
