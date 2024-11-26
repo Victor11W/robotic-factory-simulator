@@ -1,5 +1,6 @@
 package fr.tp.inf112.projects.robotsim.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tp.inf112.projects.canvas.model.Style;
 import fr.tp.inf112.projects.canvas.model.impl.RGBColor;
 import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
@@ -68,9 +69,11 @@ public class Door extends Component {
 		
 		return new RectangularShape(xCoordinate, yCoordinate, THICKNESS, doorWidth);
 	}
-	
+
+	@JsonInclude
 	private boolean open;
-	
+
+	@JsonInclude
 	private final Room room;
 	
 	private static final Style OPEN_STYLE = new ComponentStyle(RGBColor.WHITE, null, 0, null);
@@ -88,6 +91,10 @@ public class Door extends Component {
 		this.room = room;
 		this.room.addDoor(this);
 		this.open = open;
+	}
+
+	public Door(){
+		this(new Room(),Room.WALL.TOP,0,-1,true,"Door");
 	}
 	
 	@Override

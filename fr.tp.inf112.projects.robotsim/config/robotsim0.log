@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-11-23T19:13:40.038855474Z</date>
+  <millis>1732389220038</millis>
+  <nanos>855474</nanos>
+  <sequence>0</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Server started</message>
+</record>
+<record>
+  <date>2024-11-23T19:13:52.887884987Z</date>
+  <millis>1732389232887</millis>
+  <nanos>884987</nanos>
+  <sequence>1</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-23T19:13:52.891511638Z</date>
+  <millis>1732389232891</millis>
+  <nanos>511638</nanos>
+  <sequence>2</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>29</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-23T19:13:52.967469630Z</date>
+  <millis>1732389232967</millis>
+  <nanos>469630</nanos>
+  <sequence>3</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>29</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:07.598808702Z</date>
+  <millis>1732389307598</millis>
+  <nanos>808702</nanos>
+  <sequence>4</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:07.599721246Z</date>
+  <millis>1732389307599</millis>
+  <nanos>721246</nanos>
+  <sequence>5</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>30</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:07.606099263Z</date>
+  <millis>1732389307606</millis>
+  <nanos>99263</nanos>
+  <sequence>6</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>30</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:48.195361409Z</date>
+  <millis>1732389348195</millis>
+  <nanos>361409</nanos>
+  <sequence>7</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:48.196432184Z</date>
+  <millis>1732389348196</millis>
+  <nanos>432184</nanos>
+  <sequence>8</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>31</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:48.200625721Z</date>
+  <millis>1732389348200</millis>
+  <nanos>625721</nanos>
+  <sequence>9</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>31</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:50.321550327Z</date>
+  <millis>1732389350321</millis>
+  <nanos>550327</nanos>
+  <sequence>10</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:50.322299070Z</date>
+  <millis>1732389350322</millis>
+  <nanos>299070</nanos>
+  <sequence>11</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>32</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:50.325855757Z</date>
+  <millis>1732389350325</millis>
+  <nanos>855757</nanos>
+  <sequence>12</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>32</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:53.776894577Z</date>
+  <millis>1732389353776</millis>
+  <nanos>894577</nanos>
+  <sequence>13</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:53.777560262Z</date>
+  <millis>1732389353777</millis>
+  <nanos>560262</nanos>
+  <sequence>14</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>33</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-23T19:15:53.780676813Z</date>
+  <millis>1732389353780</millis>
+  <nanos>676813</nanos>
+  <sequence>15</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>33</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-23T19:16:24.560169925Z</date>
+  <millis>1732389384560</millis>
+  <nanos>169925</nanos>
+  <sequence>16</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-23T19:16:24.561216423Z</date>
+  <millis>1732389384561</millis>
+  <nanos>216423</nanos>
+  <sequence>17</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>34</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-23T19:16:24.564316914Z</date>
+  <millis>1732389384564</millis>
+  <nanos>316914</nanos>
+  <sequence>18</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>34</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-23T19:20:35.079090376Z</date>
+  <millis>1732389635079</millis>
+  <nanos>90376</nanos>
+  <sequence>19</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-23T19:20:35.079873924Z</date>
+  <millis>1732389635079</millis>
+  <nanos>873924</nanos>
+  <sequence>20</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>35</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-23T19:20:35.083475097Z</date>
+  <millis>1732389635083</millis>
+  <nanos>475097</nanos>
+  <sequence>21</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.server.FactoryHostServer</class>
+  <method>run</method>
+  <thread>35</thread>
+  <message>Client disconnected</message>
+</record>
+</log>
