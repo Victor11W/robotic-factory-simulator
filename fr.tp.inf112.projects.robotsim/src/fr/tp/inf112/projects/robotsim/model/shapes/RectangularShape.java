@@ -1,6 +1,5 @@
 package fr.tp.inf112.projects.robotsim.model.shapes;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tp.inf112.projects.canvas.model.RectangleShape;
 
 public class RectangularShape extends PositionedShape implements RectangleShape {
@@ -9,11 +8,8 @@ public class RectangularShape extends PositionedShape implements RectangleShape 
 
 	private final int width;
 
-	private final int height;
+	private final int heigth;
 
-	public RectangularShape() {
-		this(-1, -1, -1, -1);
-	}
 	public RectangularShape(final int xCoordinate,
 							final int yCoordinate,
 							final int width,
@@ -21,7 +17,7 @@ public class RectangularShape extends PositionedShape implements RectangleShape 
 		super(xCoordinate, yCoordinate);
 	
 		this.width = width;
-		this.height = heigth;
+		this.heigth = heigth;
 	}
 
 	@Override
@@ -31,11 +27,11 @@ public class RectangularShape extends PositionedShape implements RectangleShape 
 
 	@Override
 	public int getHeight() {
-		return height;
+		return heigth;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + " [width=" + width + ", heigth=" + height + "]";
+		return super.toString() + " [width=" + width + ", heigth=" + heigth + "]";
 	}
 }

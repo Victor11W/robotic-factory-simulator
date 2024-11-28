@@ -5,10 +5,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import fr.tp.inf112.projects.robotsim.app.SimulatorApplication;
 import fr.tp.inf112.projects.robotsim.model.Factory;
 import fr.tp.inf112.projects.robotsim.model.Position;
 import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
@@ -22,9 +18,9 @@ public abstract class AbstractFactoryPathFinder<Graph, Vertex> implements Factor
 	private static final long serialVersionUID = 3864762720560889146L;
 
 	private final Factory factoryModel;
-
+	
 	private final int resolution;
-
+	
 	private transient Graph graph;
 
 	public AbstractFactoryPathFinder(final Factory factoryModel,
@@ -47,18 +43,11 @@ public abstract class AbstractFactoryPathFinder<Graph, Vertex> implements Factor
 	}
 	
 	protected void buildGraph() {
-		//System.out.println("Building graph");
 		if (getGraph() == null) {
-			System.out.println("Graph is null");
-
 			graph = newGraph();
 			final int xSize = getFactoryModel().getWidth() / getResolution();
 			final int ySize = getFactoryModel().getHeight() / getResolution();
-
-
-
-			System.out.println(xSize + " : " + ySize);
-
+	
 			for (int xIndex = 0; xIndex < xSize; xIndex++) {
 				for (int yIndex = 0; yIndex < ySize; yIndex++) {
 					final int xCoordinate = xIndex * getResolution();
@@ -78,7 +67,7 @@ public abstract class AbstractFactoryPathFinder<Graph, Vertex> implements Factor
 				}
 			}
 			
-			SimulatorApplication.logger.info(graph.toString());
+			System.out.println(graph.toString());
 		}
 	}
 	

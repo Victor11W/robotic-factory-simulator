@@ -1,60 +1,73 @@
 package fr.tp.inf112.projects.robotsim.server;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.io.File;
+import java.io.IOException;
+
 import fr.tp.inf112.projects.canvas.model.Canvas;
 import fr.tp.inf112.projects.canvas.model.CanvasChooser;
 import fr.tp.inf112.projects.canvas.model.impl.AbstractCanvasPersistenceManager;
 
-import java.io.*;
-import java.net.Socket;
-
 public class RemoteFactoryPersistenceManager extends AbstractCanvasPersistenceManager {
-    private final Socket socket;
-    private final ObjectOutputStream socketObjOutStream;
-    private final ObjectInputStream socketObjInStream;
-    public RemoteFactoryPersistenceManager(final CanvasChooser canvasChooser, Socket socket) throws IOException {
-        super(canvasChooser);
-        this.socket = socket;
-        this.socketObjOutStream = new ObjectOutputStream(socket.getOutputStream());
-        this.socketObjInStream = new ObjectInputStream(socket.getInputStream());
+    
+    private Socket socket;
+
+    public RemoteFactoryPersistenceManager(CanvasChooser canvaschooser,int serverPort) {
+    	super(canvaschooser);
+    	Socket socket1;
+		try {
+			socket1 = new Socket("localhost", serverPort);
+	    	socket= socket1;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+    	
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    // Méthode pour persister un objet Factory à distance
     @Override
-    public Canvas read(final String canvasId) throws IOException {
+    public void persist(Canvas canvas) throws IOException {
+             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+             
+            // Envoi de l'objet Factory au serveur pour persistance
+            out.writeObject(canvas);
+            out.flush();
+    }
+    @Override
+    // Méthode pour lire un modèle de Factory à distance
+    public Canvas read(String canvasId) throws IOException {
         try {
-            socketObjOutStream.writeObject(canvasId);
-            socketObjOutStream.flush();
+             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+             
+            // Envoi du nom de la fabrique (factoryName) pour lecture
+            out.writeObject(canvasId);
+            out.flush();
+            
+            // Lecture de la fabrique envoyée par le serveur
 
-            Object object = socketObjInStream.readObject();
-            if (object instanceof Canvas) {
-                return (Canvas) object;
+            Object receivedObject = in.readObject();
+
+            if (receivedObject instanceof Canvas) {
+                return (Canvas) receivedObject;
+
             } else {
-                throw new IOException("Received object is not a Canvas");
+                throw new IOException("Unexpected object received from server.");
+            }}
+            catch (Exception e) {
+            	throw new IOException("Unexpected object received from server.");
             }
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void persist(Canvas canvasModel) throws IOException {
-        socketObjOutStream.writeObject(canvasModel);
-        socketObjOutStream.flush();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean delete(final Canvas canvasModel)
-            throws IOException {
-        final File canvasFile = new File(canvasModel.getId());
-
-        return canvasFile.delete();
+	@Override
+	public boolean delete(final Canvas canvasModel)
+	throws IOException {
+		final File canvasFile = new File(canvasModel.getId());
+		
+		return canvasFile.delete();
+	
     }
 }

@@ -10,10 +10,6 @@ public class Position implements Serializable {
 
 	private int yCoordinate;
 
-	public Position() {
-		this(-1, -1);
-	}
-
 	public Position(final int xCoordinate, 
 					final int yCoordinate) {
 		super();

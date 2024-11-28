@@ -1,38 +1,47 @@
 package fr.tp.inf112.projects.robotsim.app;
 
 import java.awt.Component;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
+
+import fr.tp.inf112.projects.robotsim.server.*;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.logging.Logger;
 
 import javax.swing.SwingUtilities;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
-import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 import fr.tp.inf112.projects.canvas.model.Canvas;
 import fr.tp.inf112.projects.canvas.model.impl.BasicVertex;
 import fr.tp.inf112.projects.canvas.view.CanvasViewer;
 import fr.tp.inf112.projects.canvas.view.FileCanvasChooser;
-import fr.tp.inf112.projects.robotsim.model.*;
+import fr.tp.inf112.projects.robotsim.model.Area;
+import fr.tp.inf112.projects.robotsim.model.Battery;
+import fr.tp.inf112.projects.robotsim.model.ChargingStation;
+import fr.tp.inf112.projects.robotsim.model.Conveyor;
+import fr.tp.inf112.projects.robotsim.model.Door;
+import fr.tp.inf112.projects.robotsim.model.Factory;
+import fr.tp.inf112.projects.robotsim.model.FactoryPersistenceManager;
+import fr.tp.inf112.projects.robotsim.model.Machine;
+import fr.tp.inf112.projects.robotsim.model.Robot;
+import fr.tp.inf112.projects.robotsim.model.Room;
 import fr.tp.inf112.projects.robotsim.model.path.CustomDijkstraFactoryPathFinder;
 import fr.tp.inf112.projects.robotsim.model.path.FactoryPathFinder;
 import fr.tp.inf112.projects.robotsim.model.path.JGraphTDijkstraFactoryPathFinder;
 import fr.tp.inf112.projects.robotsim.model.shapes.BasicPolygonShape;
 import fr.tp.inf112.projects.robotsim.model.shapes.CircularShape;
-import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
 import fr.tp.inf112.projects.robotsim.model.shapes.RectangularShape;
-import fr.tp.inf112.projects.robotsim.server.RemoteFactoryPersistenceManager;
-import com.fasterxml.jackson.core.util.BufferRecycler;
-// cette partie du projet à été perdu peu de temps avant le rendu, j'ai récupéré une partie du projet d'axel vivenot pour reprendre une partie de ce que j'avais fait. (jusqu'au tp 2)
-public class SimulatorApplication {
-	public static final Logger logger = Logger.getLogger(SimulatorApplication.class.getName());
 
+public class SimulatorApplication {
+	private static final Logger LOGGER = Logger.getLogger(SimulatorApplication.class.getName());
 	public static void main(String[] args) {
-		logger.info("Starting the robot simulator...");
-		logger.config("With parameters " + Arrays.toString(args) + ".");
+
+        
+        
+		LOGGER.info("Starting the robot simulator...");
+		LOGGER.config("With parameters " + Arrays.toString(args) + ".");
+
 		
 		final Factory factory = new Factory(200, 200, "Simple Test Puck Factory");
 		final Room room1 = new Room(factory, new RectangularShape(20, 20, 75, 75), "Production Room 1");
@@ -68,77 +77,28 @@ public class SimulatorApplication {
 		final Robot robot1 = new Robot(factory, jgraphPahtFinder, new CircularShape(5, 5, 2), new Battery(10), "Robot 1");
 		robot1.addTargetComponent(machine1);
 		robot1.addTargetComponent(machine2);
-		//robot1.addTargetComponent(new Conveyor(factory, conveyorShape, "Conveyor 1"));
-		//robot1.addTargetComponent(chargingStation);
+		robot1.addTargetComponent(new Conveyor(factory, conveyorShape, "Conveyor 1"));
 
 		final FactoryPathFinder customPathFinder = new CustomDijkstraFactoryPathFinder(factory, 5);
 		final Robot robot2 = new Robot(factory, customPathFinder, new CircularShape(45, 5, 2), new Battery(10), "Robot 2");
-		//robot2.addTargetComponent(chargingStation);
 		robot2.addTargetComponent(machine1);
 		robot2.addTargetComponent(machine2);
-		//robot2.addTargetComponent(new Conveyor(factory, conveyorShape, "Conveyor 1"));
+		robot2.addTargetComponent(new Conveyor(factory, conveyorShape, "Conveyor 1"));
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			  
 			@Override
 	        public void run() {
-				try  {
-					//Monolithic application
-					/*final FileCanvasChooser canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
-					FactoryPersistenceManager fpManager = new FactoryPersistenceManager(canvasChooser);
-					final Component factoryViewer = new CanvasViewer(new SimulatorController(factory, fpManager));
-					canvasChooser.setViewer(factoryViewer);*/
-
-					//Monolithic application with JSON model
-					/*ObjectMapper objectMapper = new ObjectMapper();
-					PolymorphicTypeValidator typeValidator = BasicPolymorphicTypeValidator.builder()
-							.allowIfSubType(PositionedShape.class.getPackageName())
-
-							.allowIfSubType(Area.class.getPackageName())
-                            .allowIfSubType(Room.class.getPackageName())
-                            .allowIfSubType(Factory.class.getPackageName())
-							.allowIfSubType(Robot.class.getPackageName())
-
-							.allowIfSubType(fr.tp.inf112.projects.robotsim.model.Component.class.getPackageName())
-							.allowIfSubType(BasicVertex.class.getPackageName())
-							.allowIfSubType(ArrayList.class.getName())
-							.allowIfSubType(LinkedHashSet.class.getName())
-							.build();
-					objectMapper.activateDefaultTyping(typeValidator, ObjectMapper.DefaultTyping.NON_FINAL);
-					final String jsonFactory = objectMapper.writeValueAsString(factory);
-					System.out.println("jsonFactory: " + jsonFactory);
-					final Factory fromJsonFactory = objectMapper.readValue(jsonFactory, Factory.class);
-					System.out.println("factory size: " + fromJsonFactory.getWidth());
+		        try  {
 					final FileCanvasChooser canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
-					FactoryPersistenceManager fpManager = new FactoryPersistenceManager(canvasChooser);
-					final Component factoryViewer = new CanvasViewer(new SimulatorController(fromJsonFactory, fpManager));
-					canvasChooser.setViewer(factoryViewer);*/
-
-
-					//Monolithic application with persistence socket server, using a new factory model
-					/*Socket socket = new Socket("localhost", 8080);
-					final FileCanvasChooser canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
-					RemoteFactoryPersistenceManager rfpManager = new RemoteFactoryPersistenceManager(canvasChooser, socket);
+					RemoteFactoryPersistenceManager rfpManager = new RemoteFactoryPersistenceManager(canvasChooser,8080);
 					final Component factoryViewer = new CanvasViewer(new SimulatorController(factory, rfpManager));
-					canvasChooser.setViewer(factoryViewer);*/
-
-					//Monolithic application with persistence socket server, using a remote stored model
-					/*Socket socket = new Socket("localhost", 8080);
-					final FileCanvasChooser canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
-					RemoteFactoryPersistenceManager rfpManager = new RemoteFactoryPersistenceManager(canvasChooser, socket);
-					Canvas canvas = rfpManager.read("/home/accel/telecom/slr/4sl01/f1.factory");
-					final Component factoryViewer = new CanvasViewer(new SimulatorController((Factory) canvas, rfpManager));
-					canvasChooser.setViewer(factoryViewer);*/
-
-					//Distributed application with client, web-server and persistence socket server
-					final FileCanvasChooser canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
-					FactoryPersistenceManager fpManager = new FactoryPersistenceManager(canvasChooser);
-					final Component factoryViewer = new CanvasViewer(new RemoteSimulatorController(fpManager,"/home/accel/telecom/slr/4sl01/f1.factory", "/home/accel/telecom/slr/f1.factory"));
 					canvasChooser.setViewer(factoryViewer);
+				} catch (Exception e) {
+					LOGGER.warning("The connexion failed");
+				} 
 
-				} catch (Exception ex) {
-					logger.warning(ex.getLocalizedMessage());
-				}
+				//new CanvasViewer(factory);
 			}
 		});
 	}
