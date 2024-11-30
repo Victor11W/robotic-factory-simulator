@@ -4,27 +4,36 @@ import fr.tp.inf112.projects.robotsim.server.RemoteFactoryPersistenceManager;
 import fr.tp.inf112.projects.canvas.model.Canvas;
 import fr.tp.inf112.projects.canvas.model.CanvasChooser;
 import fr.tp.inf112.projects.canvas.view.FileCanvasChooser;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.Socket;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/simulation")
 public class MicroserviceController {
 
+    private static final Logger logger = Logger.getLogger(MicroserviceController.class.getName());
     private final RemoteFactoryPersistenceManager persistenceManager;
     private final Map<String, Canvas> activeSimulations = new ConcurrentHashMap<>();
     private final CanvasChooser canvasChooser;
 
     public MicroserviceController() throws IOException {
-        // Initialisation des connexions au serveur de persistance
+        // Initialisation du CanvasChooser
         this.canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
-        this.persistenceManager = new RemoteFactoryPersistenceManager(canvasChooser, 8080);
+
+        // Connexion au serveur de persistance
+        Socket socket = new Socket("localhost", 8080);
+        logger.info("Connected to the persistence server on localhost:8080.");
+
+        // Initialisation du RemoteFactoryPersistenceManager
+        this.persistenceManager = new RemoteFactoryPersistenceManager(canvasChooser, socket);
+        logger.info("RemoteFactoryPersistenceManager initialized successfully.");
     }
 
     /**
@@ -33,14 +42,17 @@ public class MicroserviceController {
     @PostMapping("/start/{id}")
     public ResponseEntity<String> startSimulation(@PathVariable String id) {
         try {
-            Canvas canvas = persistenceManager.read(id); // Récupère le modèle à partir du serveur
+            Canvas canvas = persistenceManager.read(id);
             if (canvas == null) {
-                return createResponse("Simulation not found", HttpStatus.NOT_FOUND);
+                logger.warning("Factory model not found for ID: " + id);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Simulation not found.");
             }
-            activeSimulations.put(id, canvas); // Ajoute le modèle aux simulations actives
-            return createResponse("Simulation started", HttpStatus.OK);
+            activeSimulations.put(id, canvas);
+            logger.info("Simulation started successfully for ID: " + id);
+            return ResponseEntity.ok("Simulation started.");
         } catch (IOException e) {
-            return createResponse("Error: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            logger.severe("Error starting simulation for ID: " + id + " - " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
         }
     }
 
@@ -50,9 +62,13 @@ public class MicroserviceController {
     @GetMapping("/{id}")
     public ResponseEntity<Canvas> getSimulation(@PathVariable String id) {
         Canvas canvas = activeSimulations.get(id);
-        return (canvas != null) 
-            ? ResponseEntity.ok(canvas) 
-            : ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        if (canvas != null) {
+            logger.info("Returning simulation state for ID: " + id);
+            return ResponseEntity.ok(canvas);
+        } else {
+            logger.warning("Simulation not found for ID: " + id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     /**
@@ -60,20 +76,18 @@ public class MicroserviceController {
      */
     @DeleteMapping("/stop/{id}")
     public ResponseEntity<String> stopSimulation(@PathVariable String id) {
-        Canvas canvas = activeSimulations.remove(id); // Supprime la simulation des actives
+        Canvas canvas = activeSimulations.remove(id);
         if (canvas == null) {
-            return createResponse("Simulation not found", HttpStatus.NOT_FOUND);
+            logger.warning("Simulation not found for ID: " + id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Simulation not found.");
         }
         try {
-            persistenceManager.persist(canvas); // Persiste l'état final du modèle
-            return createResponse("Simulation stopped", HttpStatus.OK);
+            persistenceManager.persist(canvas);
+            logger.info("Simulation stopped and persisted successfully for ID: " + id);
+            return ResponseEntity.ok("Simulation stopped.");
         } catch (IOException e) {
-            return createResponse("Error: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            logger.severe("Error persisting simulation for ID: " + id + " - " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
         }
-    }
-
-    // Méthode utilitaire pour créer des réponses uniformes
-    private ResponseEntity<String> createResponse(String message, HttpStatus status) {
-        return ResponseEntity.status(status).body(message);
     }
 }
