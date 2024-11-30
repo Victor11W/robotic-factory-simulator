@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="robotsim" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="fr.tp.inf112.projects.robotsim.app.SimulatorApplication" />
+    <module name="fr.tp.inf112.projects.robotsim" />
+    <option name="VM_PARAMETERS" value="-Djava.util.logging.config.file=config/logging.properties" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

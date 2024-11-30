@@ -6,6 +6,7 @@ import fr.tp.inf112.projects.canvas.model.Color;
 import fr.tp.inf112.projects.canvas.model.Style;
 import fr.tp.inf112.projects.canvas.model.Stroke;
 import fr.tp.inf112.projects.canvas.model.impl.RGBColor;
+import net.minidev.json.annotate.JsonIgnore;
 
 public class ComponentStyle implements Style, Stroke, Serializable {
 	
@@ -55,15 +56,17 @@ public class ComponentStyle implements Style, Stroke, Serializable {
 
 	@Override
 	public Color getBackgroundColor() {
-		return backgroundColor;
+		return backgroundColor == null ? RGBColor.MAGENTA : backgroundColor;
+		//return backgroundColor;
 	}
 
 	@Override
 	public Color getColor() {
-		return lineColor;
+		return lineColor == null ? RGBColor.BLACK : lineColor;
+		//return lineColor;
 	}
 
-
+	@JsonIgnore
 	@Override
 	public Stroke getStroke() {
 		return this;

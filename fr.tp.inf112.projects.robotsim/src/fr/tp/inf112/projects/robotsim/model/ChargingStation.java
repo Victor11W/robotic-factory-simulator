@@ -23,6 +23,10 @@ public class ChargingStation extends Component {
 		charging = false;
 	}
 
+	public ChargingStation() {
+		this(new Room(),null,"ChargingStation");
+	}
+
 	@Override
 	public String toString() {
 		return super.toString() + "]";
