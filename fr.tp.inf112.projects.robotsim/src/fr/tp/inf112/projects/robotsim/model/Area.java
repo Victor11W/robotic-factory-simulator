@@ -1,18 +1,25 @@
 package fr.tp.inf112.projects.robotsim.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tp.inf112.projects.canvas.model.Style;
 import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
 import fr.tp.inf112.projects.robotsim.model.shapes.RectangularShape;
 
 public class Area extends Component {
-	
+
+	@JsonIgnore
 	private static final long serialVersionUID = 5022214804847296168L;
 
+	@JsonIgnore
 	private static final Style STYLE = new ComponentStyle( ComponentStyle.DEFAULT_DASH_PATTERN );
-	
+
+	@JsonInclude
 	private Machine machine;
-	
+
+	public Area() {
+		this(new Room(),null,"DefaultArea");
+	}
 	public Area(final Room room,
 				final RectangularShape shape,
 				final String name) {
@@ -21,10 +28,6 @@ public class Area extends Component {
 		room.addArea(this);
 		
 		machine = null;
-	}
-
-	public Area() {
-		this(new Room(),null,"");
 	}
 	
 	protected void setMachine( final Machine machine ) {
@@ -40,7 +43,8 @@ public class Area extends Component {
 	public String toString() {
 		return super.toString() + " machine=" + machine + "]";
 	}
-	
+
+	@JsonIgnore
 	@Override
 	public Style getStyle() {
 		return STYLE;

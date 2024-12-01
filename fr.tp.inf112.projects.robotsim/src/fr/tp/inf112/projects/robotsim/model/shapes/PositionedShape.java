@@ -3,11 +3,13 @@ package fr.tp.inf112.projects.robotsim.model.shapes;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tp.inf112.projects.canvas.model.Shape;
 import fr.tp.inf112.projects.robotsim.model.Position;
 
 public abstract class PositionedShape implements Shape, Serializable {
 
+	@JsonIgnore
 	private static final long serialVersionUID = 2217860927757709195L;
 
 	private static float intersectionLength(final int coordinate1,
@@ -29,6 +31,7 @@ public abstract class PositionedShape implements Shape, Serializable {
 		return 0;
 	}
 
+	@JsonInclude
 	private final Position position;
 	
 	protected PositionedShape(final int xCoordinate,

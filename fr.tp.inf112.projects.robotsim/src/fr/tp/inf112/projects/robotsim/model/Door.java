@@ -1,5 +1,6 @@
 package fr.tp.inf112.projects.robotsim.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tp.inf112.projects.canvas.model.Style;
 import fr.tp.inf112.projects.canvas.model.impl.RGBColor;
@@ -8,8 +9,10 @@ import fr.tp.inf112.projects.robotsim.model.shapes.RectangularShape;
 
 public class Door extends Component {
 
+	@JsonIgnore
 	private static final long serialVersionUID = 4038942468211075735L;
 
+	@JsonIgnore
 	private static final int THICKNESS = 1;
 	
 	private static int computexCoordinate(final Room room,
@@ -75,9 +78,13 @@ public class Door extends Component {
 
 	@JsonInclude
 	private final Room room;
-	
+
+	@JsonIgnore
 	private static final Style OPEN_STYLE = new ComponentStyle(RGBColor.WHITE, null, 0, null);
-	
+
+	public Door() {
+		this(new Room(), Room.WALL.TOP,0,-1,false,"DefaultDoor");
+	}
 	public Door(final Room room,
 				final Room.WALL wall,
 				final int offset,
@@ -93,10 +100,7 @@ public class Door extends Component {
 		this.open = open;
 	}
 
-	public Door(){
-		this(new Room(),Room.WALL.TOP,0,-1,true,"Door");
-	}
-	
+	@JsonIgnore
 	@Override
 	public Style getStyle() {
 		return isOpen() ? OPEN_STYLE : ComponentStyle.DEFAULT_BLACK;

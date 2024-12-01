@@ -1,37 +1,39 @@
 package fr.tp.inf112.projects.robotsim.model;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tp.inf112.projects.canvas.model.Figure;
 import fr.tp.inf112.projects.canvas.model.Style;
-import fr.tp.inf112.projects.robotsim.model.shapes.CircularShape;
+import fr.tp.inf112.projects.robotsim.app.SimulatorApplication;
 import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
 import fr.tp.inf112.projects.canvas.model.Shape;
 
 public abstract class Component implements Figure, Serializable, Runnable {
-	
+	@JsonIgnore
+	private static final Logger logger = Logger.getLogger(Component.class.getName());
+
+	@JsonIgnore
 	private static final long serialVersionUID = -5960950869184030220L;
 
 	@JsonInclude
-	public String id;
+	private String id;
 
 	@JsonBackReference
 	private final Factory factory;
 
 	@JsonInclude
-	public final PositionedShape positionedShape;
+	private final PositionedShape positionedShape;
 
 	@JsonInclude
-	public final String name;
+	private final String name;
 
 	protected Component() {
-		this(null, null, "Component");
+		this(null,null,"DefaultComponent");
 	}
-
 	protected Component(final Factory factory,
 						final PositionedShape shape,
 						final String name) {
@@ -58,25 +60,18 @@ public abstract class Component implements Figure, Serializable, Runnable {
 
 	@JsonIgnore
 	public Position getPosition() {
-		PositionedShape shape = getPositionedShape();
-		if(shape == null) {
-			return new Position(-1, -1);
-		}
-		return shape.getPosition();
+		return getPositionedShape().getPosition();
 	}
 
-	public Factory getFactory() {
+	protected Factory getFactory() {
 		return factory;
 	}
 
 	@JsonIgnore
 	@Override
 	public int getxCoordinate() {
-		PositionedShape shape = getPositionedShape();
-		if(shape == null) {
-			return -1;
-		}
-		return shape.getxCoordinate();
+		final PositionedShape shape = getPositionedShape();
+		return shape == null ? -1 : shape.getxCoordinate();
 	}
 
 	protected boolean setxCoordinate(int xCoordinate) {
@@ -175,9 +170,9 @@ public abstract class Component implements Figure, Serializable, Runnable {
 		while(isSimulationStarted()) {
 			behave();
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 		}
 	}

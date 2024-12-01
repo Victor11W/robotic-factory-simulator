@@ -3,17 +3,19 @@ package fr.tp.inf112.projects.robotsim.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
 import fr.tp.inf112.projects.robotsim.model.shapes.RectangularShape;
 
 public class Room extends Component {
-	
+
+	@JsonIgnore
 	private static final long serialVersionUID = 1449569724908316962L;
 
 	public static enum WALL {LEFT, TOP, RIGHT, BOTTOM};
-	
+
+	@JsonIgnore
 	private static final int WALL_THICKNESS = 5;
 
 	@JsonInclude
@@ -34,6 +36,9 @@ public class Room extends Component {
 	@JsonInclude
 	private final List<Door> doors;
 
+	public Room() {
+		this(null,null,"DefaultRoom");
+	}
 	public Room(final Factory factory,
 				final RectangularShape shape,
 				final String name) {
@@ -47,11 +52,7 @@ public class Room extends Component {
 		areas = new ArrayList<>();
 		doors = new ArrayList<>();
 	}
-
-	public Room() {
-		this(null,null,"");
-	}
-
+	
 	protected boolean addArea(final Area area) {
 		return areas.add(area);
 	}

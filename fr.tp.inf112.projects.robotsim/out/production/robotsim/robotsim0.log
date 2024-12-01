@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-11-30T12:41:41.087967456Z</date>
+  <millis>1732970501087</millis>
+  <nanos>967456</nanos>
+  <sequence>0</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Server started</message>
+</record>
+<record>
+  <date>2024-11-30T12:41:55.700390232Z</date>
+  <millis>1732970515700</millis>
+  <nanos>390232</nanos>
+  <sequence>1</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:41:55.704067629Z</date>
+  <millis>1732970515704</millis>
+  <nanos>67629</nanos>
+  <sequence>2</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>35</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:41:55.783076655Z</date>
+  <millis>1732970515783</millis>
+  <nanos>76655</nanos>
+  <sequence>3</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>35</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:07.115353333Z</date>
+  <millis>1732971187115</millis>
+  <nanos>353333</nanos>
+  <sequence>4</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:07.116302757Z</date>
+  <millis>1732971187116</millis>
+  <nanos>302757</nanos>
+  <sequence>5</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>42</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:07.121957621Z</date>
+  <millis>1732971187121</millis>
+  <nanos>957621</nanos>
+  <sequence>6</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>42</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:33.677012192Z</date>
+  <millis>1732971213677</millis>
+  <nanos>12192</nanos>
+  <sequence>7</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:33.677927020Z</date>
+  <millis>1732971213677</millis>
+  <nanos>927020</nanos>
+  <sequence>8</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>43</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:33.682271995Z</date>
+  <millis>1732971213682</millis>
+  <nanos>271995</nanos>
+  <sequence>9</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>43</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:52.903464308Z</date>
+  <millis>1732971232903</millis>
+  <nanos>464308</nanos>
+  <sequence>10</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:52.904201008Z</date>
+  <millis>1732971232904</millis>
+  <nanos>201008</nanos>
+  <sequence>11</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>44</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:53:52.907154730Z</date>
+  <millis>1732971232907</millis>
+  <nanos>154730</nanos>
+  <sequence>12</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>44</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:28.659974026Z</date>
+  <millis>1732971388659</millis>
+  <nanos>974026</nanos>
+  <sequence>13</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:28.660947175Z</date>
+  <millis>1732971388660</millis>
+  <nanos>947175</nanos>
+  <sequence>14</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>45</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:28.726927065Z</date>
+  <millis>1732971388726</millis>
+  <nanos>927065</nanos>
+  <sequence>15</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>45</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:31.540189128Z</date>
+  <millis>1732971391540</millis>
+  <nanos>189128</nanos>
+  <sequence>16</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:31.540988106Z</date>
+  <millis>1732971391540</millis>
+  <nanos>988106</nanos>
+  <sequence>17</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>46</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:31.543851677Z</date>
+  <millis>1732971391543</millis>
+  <nanos>851677</nanos>
+  <sequence>18</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>46</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:34.359550090Z</date>
+  <millis>1732971394359</millis>
+  <nanos>550090</nanos>
+  <sequence>19</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:34.360530132Z</date>
+  <millis>1732971394360</millis>
+  <nanos>530132</nanos>
+  <sequence>20</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>47</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:34.365399473Z</date>
+  <millis>1732971394365</millis>
+  <nanos>399473</nanos>
+  <sequence>21</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>47</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:47.976398565Z</date>
+  <millis>1732971407976</millis>
+  <nanos>398565</nanos>
+  <sequence>22</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:47.977049412Z</date>
+  <millis>1732971407977</millis>
+  <nanos>49412</nanos>
+  <sequence>23</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>48</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:47.979590610Z</date>
+  <millis>1732971407979</millis>
+  <nanos>590610</nanos>
+  <sequence>24</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>48</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:49.058651692Z</date>
+  <millis>1732971409058</millis>
+  <nanos>651692</nanos>
+  <sequence>25</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:49.059329240Z</date>
+  <millis>1732971409059</millis>
+  <nanos>329240</nanos>
+  <sequence>26</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>49</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:49.062362923Z</date>
+  <millis>1732971409062</millis>
+  <nanos>362923</nanos>
+  <sequence>27</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>49</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:51.791471029Z</date>
+  <millis>1732971411791</millis>
+  <nanos>471029</nanos>
+  <sequence>28</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:51.792099122Z</date>
+  <millis>1732971411792</millis>
+  <nanos>99122</nanos>
+  <sequence>29</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>50</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:56:51.793436954Z</date>
+  <millis>1732971411793</millis>
+  <nanos>436954</nanos>
+  <sequence>30</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>50</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:15.336971164Z</date>
+  <millis>1732971495336</millis>
+  <nanos>971164</nanos>
+  <sequence>31</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:15.337571124Z</date>
+  <millis>1732971495337</millis>
+  <nanos>571124</nanos>
+  <sequence>32</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>51</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:15.341101511Z</date>
+  <millis>1732971495341</millis>
+  <nanos>101511</nanos>
+  <sequence>33</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>51</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:18.742326939Z</date>
+  <millis>1732971498742</millis>
+  <nanos>326939</nanos>
+  <sequence>34</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:18.743148570Z</date>
+  <millis>1732971498743</millis>
+  <nanos>148570</nanos>
+  <sequence>35</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>52</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:18.744678607Z</date>
+  <millis>1732971498744</millis>
+  <nanos>678607</nanos>
+  <sequence>36</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>52</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:20.508981491Z</date>
+  <millis>1732971500508</millis>
+  <nanos>981491</nanos>
+  <sequence>37</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:20.509802250Z</date>
+  <millis>1732971500509</millis>
+  <nanos>802250</nanos>
+  <sequence>38</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>53</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:20.512791940Z</date>
+  <millis>1732971500512</millis>
+  <nanos>791940</nanos>
+  <sequence>39</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>53</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:21.698005305Z</date>
+  <millis>1732971501698</millis>
+  <nanos>5305</nanos>
+  <sequence>40</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:21.698724341Z</date>
+  <millis>1732971501698</millis>
+  <nanos>724341</nanos>
+  <sequence>41</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>54</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T12:58:21.700562554Z</date>
+  <millis>1732971501700</millis>
+  <nanos>562554</nanos>
+  <sequence>42</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>54</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:05.901869595Z</date>
+  <millis>1732971845901</millis>
+  <nanos>869595</nanos>
+  <sequence>43</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:05.902752042Z</date>
+  <millis>1732971845902</millis>
+  <nanos>752042</nanos>
+  <sequence>44</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>55</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:05.906524209Z</date>
+  <millis>1732971845906</millis>
+  <nanos>524209</nanos>
+  <sequence>45</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>55</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:08.387614784Z</date>
+  <millis>1732971848387</millis>
+  <nanos>614784</nanos>
+  <sequence>46</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:08.388272043Z</date>
+  <millis>1732971848388</millis>
+  <nanos>272043</nanos>
+  <sequence>47</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>56</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:08.390408322Z</date>
+  <millis>1732971848390</millis>
+  <nanos>408322</nanos>
+  <sequence>48</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>56</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:16.692533289Z</date>
+  <millis>1732971856692</millis>
+  <nanos>533289</nanos>
+  <sequence>49</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:16.693362104Z</date>
+  <millis>1732971856693</millis>
+  <nanos>362104</nanos>
+  <sequence>50</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>57</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:16.696789956Z</date>
+  <millis>1732971856696</millis>
+  <nanos>789956</nanos>
+  <sequence>51</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>57</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:20.764338410Z</date>
+  <millis>1732971860764</millis>
+  <nanos>338410</nanos>
+  <sequence>52</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:20.765069049Z</date>
+  <millis>1732971860765</millis>
+  <nanos>69049</nanos>
+  <sequence>53</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>58</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:20.766337679Z</date>
+  <millis>1732971860766</millis>
+  <nanos>337679</nanos>
+  <sequence>54</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>58</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:59.686938227Z</date>
+  <millis>1732971899686</millis>
+  <nanos>938227</nanos>
+  <sequence>55</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:04:59.689980447Z</date>
+  <millis>1732971899689</millis>
+  <nanos>980447</nanos>
+  <sequence>56</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>59</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:05:10.632679380Z</date>
+  <millis>1732971910632</millis>
+  <nanos>679380</nanos>
+  <sequence>57</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>59</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:05:12.024520821Z</date>
+  <millis>1732971912024</millis>
+  <nanos>520821</nanos>
+  <sequence>58</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:05:12.027538083Z</date>
+  <millis>1732971912027</millis>
+  <nanos>538083</nanos>
+  <sequence>59</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>60</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:05:13.861083479Z</date>
+  <millis>1732971913861</millis>
+  <nanos>83479</nanos>
+  <sequence>60</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>60</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:08.674750253Z</date>
+  <millis>1732971968674</millis>
+  <nanos>750253</nanos>
+  <sequence>61</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:08.676868357Z</date>
+  <millis>1732971968676</millis>
+  <nanos>868357</nanos>
+  <sequence>62</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>61</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:22.760675406Z</date>
+  <millis>1732971982760</millis>
+  <nanos>675406</nanos>
+  <sequence>63</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>61</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:24.261492552Z</date>
+  <millis>1732971984261</millis>
+  <nanos>492552</nanos>
+  <sequence>64</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:24.263652375Z</date>
+  <millis>1732971984263</millis>
+  <nanos>652375</nanos>
+  <sequence>65</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>62</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:27.533564844Z</date>
+  <millis>1732971987533</millis>
+  <nanos>564844</nanos>
+  <sequence>66</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>62</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:32.876212060Z</date>
+  <millis>1732971992876</millis>
+  <nanos>212060</nanos>
+  <sequence>67</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:32.876771753Z</date>
+  <millis>1732971992876</millis>
+  <nanos>771753</nanos>
+  <sequence>68</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>63</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:06:32.879557315Z</date>
+  <millis>1732971992879</millis>
+  <nanos>557315</nanos>
+  <sequence>69</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>63</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:11:58.349394731Z</date>
+  <millis>1732972318349</millis>
+  <nanos>394731</nanos>
+  <sequence>70</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:11:58.350524859Z</date>
+  <millis>1732972318350</millis>
+  <nanos>524859</nanos>
+  <sequence>71</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>64</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:11:58.411689370Z</date>
+  <millis>1732972318411</millis>
+  <nanos>689370</nanos>
+  <sequence>72</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>64</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:01.033861981Z</date>
+  <millis>1732972321033</millis>
+  <nanos>861981</nanos>
+  <sequence>73</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:01.034377481Z</date>
+  <millis>1732972321034</millis>
+  <nanos>377481</nanos>
+  <sequence>74</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>65</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:01.036658046Z</date>
+  <millis>1732972321036</millis>
+  <nanos>658046</nanos>
+  <sequence>75</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>65</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:02.950507059Z</date>
+  <millis>1732972322950</millis>
+  <nanos>507059</nanos>
+  <sequence>76</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:02.951089406Z</date>
+  <millis>1732972322951</millis>
+  <nanos>89406</nanos>
+  <sequence>77</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>66</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:02.955357108Z</date>
+  <millis>1732972322955</millis>
+  <nanos>357108</nanos>
+  <sequence>78</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>66</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:05.581631030Z</date>
+  <millis>1732972325581</millis>
+  <nanos>631030</nanos>
+  <sequence>79</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:05.582359084Z</date>
+  <millis>1732972325582</millis>
+  <nanos>359084</nanos>
+  <sequence>80</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>67</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:12:05.584431343Z</date>
+  <millis>1732972325584</millis>
+  <nanos>431343</nanos>
+  <sequence>81</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>67</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:21:02.005731567Z</date>
+  <millis>1732972862005</millis>
+  <nanos>731567</nanos>
+  <sequence>82</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:21:02.006811670Z</date>
+  <millis>1732972862006</millis>
+  <nanos>811670</nanos>
+  <sequence>83</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>68</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:21:02.074756742Z</date>
+  <millis>1732972862074</millis>
+  <nanos>756742</nanos>
+  <sequence>84</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>68</thread>
+  <message>Client disconnected</message>
+</record>
+<record>
+  <date>2024-11-30T13:21:03.728607213Z</date>
+  <millis>1732972863728</millis>
+  <nanos>607213</nanos>
+  <sequence>85</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketServer</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketServer</class>
+  <method>run</method>
+  <thread>1</thread>
+  <message>Client connected</message>
+</record>
+<record>
+  <date>2024-11-30T13:21:03.729096333Z</date>
+  <millis>1732972863729</millis>
+  <nanos>96333</nanos>
+  <sequence>86</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>69</thread>
+  <message>Thread running</message>
+</record>
+<record>
+  <date>2024-11-30T13:21:03.731823746Z</date>
+  <millis>1732972863731</millis>
+  <nanos>823746</nanos>
+  <sequence>87</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.socket.SocketHost</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.socket.SocketHost</class>
+  <method>run</method>
+  <thread>69</thread>
+  <message>Client disconnected</message>
+</record>

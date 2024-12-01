@@ -2,15 +2,15 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2024-11-23T19:20:32.326522865Z</date>
-  <millis>1732389632326</millis>
-  <nanos>522865</nanos>
+  <date>2024-11-30T13:25:02.496084426Z</date>
+  <millis>1732973102496</millis>
+  <nanos>84426</nanos>
   <sequence>0</sequence>
-  <logger>fr.tp.inf112.projects.robotsim.app.SimulatorApplication</logger>
+  <logger>fr.tp.inf112.projects.robotsim.service.RemoteSimulatorController</logger>
   <level>INFO</level>
-  <class>fr.tp.inf112.projects.robotsim.app.SimulatorApplication</class>
-  <method>main</method>
-  <thread>1</thread>
-  <message>Starting the robot simulator...</message>
+  <class>fr.tp.inf112.projects.robotsim.service.RemoteSimulatorController</class>
+  <method>startAnimation</method>
+  <thread>56</thread>
+  <message>Web server started the simulation</message>
 </record>
 </log>

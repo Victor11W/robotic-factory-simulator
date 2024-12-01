@@ -2,27 +2,25 @@ package fr.tp.inf112.projects.robotsim.model;
 
 import java.util.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import fr.tp.inf112.projects.canvas.model.Shape;
 import fr.tp.inf112.projects.canvas.model.Style;
 import fr.tp.inf112.projects.canvas.model.impl.RGBColor;
 import fr.tp.inf112.projects.robotsim.model.motion.Motion;
-import fr.tp.inf112.projects.robotsim.model.path.CustomDijkstraFactoryPathFinder;
 import fr.tp.inf112.projects.robotsim.model.path.FactoryPathFinder;
-import fr.tp.inf112.projects.robotsim.model.path.JGraphTDijkstraFactoryPathFinder;
 import fr.tp.inf112.projects.robotsim.model.shapes.CircularShape;
 import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
 import fr.tp.inf112.projects.robotsim.model.shapes.RectangularShape;
 
 public class Robot extends Component {
-	
+
+	@JsonIgnore
 	private static final long serialVersionUID = -1218857231970296747L;
 
+	@JsonIgnore
 	private static final Style STYLE = new ComponentStyle(RGBColor.GREEN, RGBColor.BLACK, 3.0f, null);
 
+	@JsonIgnore
 	private static final Style BLOCKED_STYLE = new ComponentStyle(RGBColor.RED, RGBColor.BLACK, 3.0f, new float[]{4.0f});
 
 	@JsonInclude
@@ -32,11 +30,12 @@ public class Robot extends Component {
 	private int speed;
 
 	@JsonInclude
-	public final List<Component> targetComponents;
+	private List<Component> targetComponents;
 
 	@JsonIgnore
 	private transient Iterator<Component> targetComponentsIterator;
-	
+
+	@JsonInclude
 	private Component currTargetComponent;
 
 	@JsonIgnore
@@ -44,13 +43,15 @@ public class Robot extends Component {
 
 	@JsonIgnore
 	private transient boolean blocked;
-
-	@JsonIgnore
+	
 	private Position nextPosition;
 
 	@JsonIgnore
-	public FactoryPathFinder pathFinder;
+	private FactoryPathFinder pathFinder;
 
+	public Robot() {
+		this(null,null,null,null, "DefaultRobot");
+	}
 	public Robot(final Factory factory,
 				 final FactoryPathFinder pathFinder,
 				 final CircularShape shape,
@@ -70,10 +71,6 @@ public class Robot extends Component {
 		nextPosition = null;
 	}
 
-	public Robot() {
-		this(null, null, null,null,"Robot");
-	}
-
 	@Override
 	public String toString() {
 		return super.toString() + " battery=" + battery + "]";
@@ -87,12 +84,20 @@ public class Robot extends Component {
 		this.speed = speed;
 	}
 	
+	private List<Component> getTargetComponents() {
+		if (targetComponents == null) {
+			targetComponents = new ArrayList<>();
+		}
+		
+		return targetComponents;
+	}
+	
 	public boolean addTargetComponent(final Component targetComponent) {
-		return targetComponents.add(targetComponent);
+		return getTargetComponents().add(targetComponent);
 	}
 	
 	public boolean removeTargetComponent(final Component targetComponent) {
-		return targetComponents.remove(targetComponent);
+		return getTargetComponents().remove(targetComponent);
 	}
 	
 	@Override
@@ -102,7 +107,7 @@ public class Robot extends Component {
 
 	@Override
 	public boolean behave() {
-		if (targetComponents.isEmpty()) {
+		if (getTargetComponents().isEmpty()) {
 			return false;
 		}
 		
@@ -117,7 +122,7 @@ public class Robot extends Component {
 		
 	private Component nextTargetComponentToVisit() {
 		if (targetComponentsIterator == null || !targetComponentsIterator.hasNext()) {
-			targetComponentsIterator = targetComponents.iterator();
+			targetComponentsIterator = getTargetComponents().iterator();
 		}
 		
 		return targetComponentsIterator.hasNext() ? targetComponentsIterator.next() : null;
@@ -138,27 +143,11 @@ public class Robot extends Component {
 				computePathToCurrentTargetComponent();
 			}
 		}
+		
 		return displacement;
-	}
-
-	//this is terrible, but it works
-	private Position findFreeNeighbouringPosition() {
-		Position up = new Position(getxCoordinate(),getyCoordinate() + 4);
-		Position left = new Position(getxCoordinate() - 4,getyCoordinate());
-		Position right = new Position(getxCoordinate() + 4,getyCoordinate());
-		Position down = new Position(getxCoordinate(),getyCoordinate() - 4);
-		Optional<Position> availablePosition = Arrays.stream((new Position[]{up, left, right, down})).filter(position -> {
-			PositionedShape shape = new RectangularShape(position.getxCoordinate(), position.getyCoordinate(), 2, 2);
-			return (getNextPosition().getxCoordinate() != position.getxCoordinate() || getNextPosition().getyCoordinate() != position.getyCoordinate())
-					&& !getFactory().hasObstacleAt(shape);
-		}).findFirst();
-		return availablePosition.orElse(null);
 	}
 	
 	private void computePathToCurrentTargetComponent() {
-		if(pathFinder == null){
-			pathFinder = new CustomDijkstraFactoryPathFinder(getFactory(), 5);
-		}
 		final List<Position> currentPathPositions = pathFinder.findPath(this, currTargetComponent);
 		currentPathPositionsIter = currentPathPositions.iterator();
 	}
@@ -177,10 +166,9 @@ public class Robot extends Component {
 				   										   nextPosition.getyCoordinate(),
 				   										   2,
 				   										   2);
-		//livelock is still possible
 		if (getFactory().hasMobileComponentAt(shape, this)) {
 			this.nextPosition = nextPosition;
-
+			
 			return null;
 		}
 
@@ -207,13 +195,12 @@ public class Robot extends Component {
 		return nextPosition;
 	}
 
-	@JsonIgnore
-	public boolean isLivelyLocked() {
+	private boolean isLivelyLocked() {
 		if (getNextPosition() == null) {
 			return false;
 		}
 		final PositionedShape shape = new RectangularShape(getNextPosition().getxCoordinate(),
-				nextPosition.getyCoordinate(),
+				getNextPosition().getyCoordinate(),
 				2,
 				2);
 		final Component otherMobileComponent = getFactory().getMobileComponentAt(shape,this);
@@ -222,5 +209,19 @@ public class Robot extends Component {
 			return getPosition().equals(otherRobot.getNextPosition());
 		}
 		return false;
+	}
+
+	//this is terrible, but it works
+	private Position findFreeNeighbouringPosition() {
+		Position up = new Position(getxCoordinate(),getyCoordinate() + 4);
+		Position left = new Position(getxCoordinate() - 4,getyCoordinate());
+		Position right = new Position(getxCoordinate() + 4,getyCoordinate());
+		Position down = new Position(getxCoordinate(),getyCoordinate() - 4);
+		Optional<Position> availablePosition = Arrays.stream((new Position[]{up, left, right, down})).filter(position -> {
+			PositionedShape shape = new RectangularShape(position.getxCoordinate(), position.getyCoordinate(), 2, 2);
+			return (getNextPosition().getxCoordinate() != position.getxCoordinate() || getNextPosition().getyCoordinate() != position.getyCoordinate())
+					&& !getFactory().hasObstacleAt(shape);
+		}).findFirst();
+		return availablePosition.orElse(null);
 	}
 }

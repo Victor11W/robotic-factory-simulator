@@ -5,8 +5,6 @@ import java.util.Collection;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import fr.tp.inf112.projects.canvas.controller.Observable;
 import fr.tp.inf112.projects.canvas.controller.Observer;
@@ -18,8 +16,10 @@ import fr.tp.inf112.projects.robotsim.model.shapes.RectangularShape;
 
 public class Factory extends Component implements Canvas, Observable {
 
+	@JsonIgnore
 	private static final long serialVersionUID = 5156526483612458192L;
-	
+
+	@JsonIgnore
 	private static final ComponentStyle DEFAULT = new ComponentStyle(5.0f);
 
 	@JsonManagedReference
@@ -28,13 +28,12 @@ public class Factory extends Component implements Canvas, Observable {
 	@JsonIgnore
 	private transient List<Observer> observers;
 
-	@JsonInclude
+	@JsonIgnore
 	public transient boolean simulationStarted;
 
 	public Factory() {
-		this(0, 0, "Factory");
+		this(-1,-1,"DefaultFactory");
 	}
-
 	public Factory(final int width,
 				   final int height,
 				   final String name ) {
@@ -62,7 +61,7 @@ public class Factory extends Component implements Canvas, Observable {
 	public boolean removeObserver(Observer observer) {
 		return getObservers().remove(observer);
 	}
-
+	
 	public void notifyObservers() {
 		for (final Observer observer : getObservers()) {
 			observer.modelChanged();
@@ -89,12 +88,12 @@ public class Factory extends Component implements Canvas, Observable {
 		return false;
 	}
 
-	public List<Component> getComponents() {
+	protected List<Component> getComponents() {
 		return components;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@JsonIgnore
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Collection<Figure> getFigures() {
 		return (Collection) components;
@@ -115,17 +114,17 @@ public class Factory extends Component implements Canvas, Observable {
 			notifyObservers();
 
 			behave();
-/*			while (isSimulationStarted()) {
+			/*while (isSimulationStarted()) {
 				behave();
-				
+
 				try {
 					Thread.sleep(100);
 				}
 				catch (final InterruptedException ex) {
 					System.err.println("Simulation was abruptely interrupted");
 				}
-			}
-*/		}
+			}*/
+		}
 	}
 
 	public void stopSimulation() {
@@ -139,12 +138,12 @@ public class Factory extends Component implements Canvas, Observable {
 	@Override
 	public boolean behave() {
 		boolean behaved = true;
-		
+
 		for (final Component component : getComponents()) {
-//			behaved = component.behave() || behaved;
+			//behaved = component.behave() || behaved;
 			new Thread(component).start();
 		}
-		
+
 		return behaved;
 	}
 	
@@ -175,7 +174,7 @@ public class Factory extends Component implements Canvas, Observable {
 	}
 
 	public synchronized Component getMobileComponentAt(final PositionedShape shape,
-													 final Component movingComponent) {
+													   final Component movingComponent) {
 		for (final Component component : getComponents()) {
 			if (component != movingComponent && component.isMobile() && component.overlays(shape)) {
 				return component;
@@ -184,5 +183,4 @@ public class Factory extends Component implements Canvas, Observable {
 
 		return null;
 	}
-
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-11-30T13:21:02.101770619Z</date>
+  <millis>1732972862101</millis>
+  <nanos>770619</nanos>
+  <sequence>0</sequence>
+  <logger>fr.tp.inf112.projects.robotsim.service.RemoteSimulatorController</logger>
+  <level>INFO</level>
+  <class>fr.tp.inf112.projects.robotsim.service.RemoteSimulatorController</class>
+  <method>startAnimation</method>
+  <thread>56</thread>
+  <message>Web server started the simulation</message>
+</record>
+</log>
