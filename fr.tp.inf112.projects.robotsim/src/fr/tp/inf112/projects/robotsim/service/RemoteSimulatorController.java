@@ -39,13 +39,18 @@ public class RemoteSimulatorController extends SimulatorController {
     @Override
     public void startAnimation() {
         try {
-            final URI uri = new URI("http", null, microserviceBaseUrl, 2000, "/simulation/start/" + getCanvas().getId(), null, null);
-            HttpRequest request = HttpRequest.newBuilder()
-                .uri(uri)
-                .POST(HttpRequest.BodyPublishers.noBody())
-                .build();
+        	logger.info(getCanvas().getId());
+        	String url = "http://" + microserviceBaseUrl + ":2000/simulation/start" + "?factoryPath=" +getCanvas().getId() ;
+        	
+        	HttpRequest request = HttpRequest.newBuilder()
+        	    .uri(URI.create(url)) // Utiliser URI.create pour éviter l'encodage
+        	    .POST(HttpRequest.BodyPublishers.noBody())
+        	    .build();
 
+
+            logger.info("Sending POST request to " + url);
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            logger.info("Response: " + response.statusCode() + " - " + response.body());
             if (response.statusCode() == 200 && Boolean.parseBoolean(response.body())) {
                 logger.info("Simulation started successfully for factory ID: " + getCanvas().getId());
 
@@ -54,7 +59,7 @@ public class RemoteSimulatorController extends SimulatorController {
             } else {
                 logger.warning("Failed to start simulation for factory ID: " + getCanvas().getId());
             }
-        } catch (URISyntaxException | IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             logger.severe("Error starting simulation: " + e.getMessage());
         }
     }
@@ -140,11 +145,31 @@ public class RemoteSimulatorController extends SimulatorController {
     */
     @Override
     public void setCanvas(final Canvas canvasModel) {
-    final List<Observer> observers = ((Factory) getCanvas()).getObservers();
-    super.setCanvas(canvasModel);
-    for (final Observer observer : observers) {
-    ((Factory) getCanvas()).addObserver(observer);
-    }
-    ((Factory) getCanvas()).notifyObservers();
+        if (canvasModel == null) {
+            logger.warning("Provided canvasModel is null. Skipping setCanvas operation.");
+            return;
+        }
+
+        if (!(canvasModel instanceof Factory)) {
+            logger.warning("Provided canvasModel is not an instance of Factory. Skipping setCanvas operation.");
+            return;
+        }
+
+        Factory factoryModel = (Factory) canvasModel;
+
+        if (getCanvas() == null) {
+            logger.warning("Current canvas is null. Initializing with a new Factory instance.");
+            super.setCanvas(new Factory(200, 200, "Default Factory"));
+            
+        }
+
+        Factory currentFactory = (Factory) getCanvas();
+
+        final List<Observer> observers = currentFactory.getObservers();
+        super.setCanvas(factoryModel);
+        for (final Observer observer : observers) {
+            factoryModel.addObserver(observer);
+        }
+        factoryModel.notifyObservers();
     }
 }

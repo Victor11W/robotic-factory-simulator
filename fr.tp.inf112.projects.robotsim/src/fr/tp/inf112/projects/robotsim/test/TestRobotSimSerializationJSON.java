@@ -58,4 +58,18 @@ public class TestRobotSimSerializationJSON {
             assert false; // Fail the test if an exception occurs
         }
     }
+    public Factory createRoundTripFactory() throws JsonProcessingException {
+        // Create a sample Factory object (replace this with real data if needed)
+        Factory myFactory = new Factory(100, 200, "Test Factory");
+        // Sérialiser la factory en JSON
+        final String factoryAsJsonString = objectMapper.writeValueAsString(myFactory);
+        logger.info("Factory serialized to JSON: " + factoryAsJsonString);
+
+        // Désérialiser la factory depuis le JSON
+        final Factory roundTripFactory = objectMapper.readValue(factoryAsJsonString, Factory.class);
+        logger.info("Factory deserialized from JSON: " + roundTripFactory.toString());
+
+        return roundTripFactory;
+    }
+
 }
