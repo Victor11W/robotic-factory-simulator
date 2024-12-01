@@ -35,5 +35,6 @@
 	<classpathentry kind="lib" path="libs/jgrapht/lib/sux4j-5.4.1.jar"/>
 	<classpathentry kind="lib" path="libs/jgrapht/lib/webgraph-3.6.10.jar"/>
 	<classpathentry kind="lib" path="libs/jgrapht/lib/webgraph-big-3.7.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
