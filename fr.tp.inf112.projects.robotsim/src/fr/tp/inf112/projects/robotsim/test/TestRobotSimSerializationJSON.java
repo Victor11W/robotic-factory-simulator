@@ -1,4 +1,4 @@
-package test;
+package fr.tp.inf112.projects.robotsim.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,10 +9,6 @@ import fr.tp.inf112.projects.canvas.model.impl.BasicVertex;
 import fr.tp.inf112.projects.robotsim.model.Component;
 import fr.tp.inf112.projects.robotsim.model.Factory;
 import fr.tp.inf112.projects.robotsim.model.shapes.PositionedShape;
-import fr.tp.inf112.projects.robotsim.model.shapes.RectangularShape;
-import fr.tp.inf112.projects.robotsim.socket.SocketClient;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
