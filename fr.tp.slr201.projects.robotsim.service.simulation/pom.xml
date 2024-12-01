@@ -27,7 +27,10 @@
 		<url/>
 	</scm>
 	<properties>
+		<canvas-viewer-systemPath>/home/bob/eclipse-workspace/fr.tp.slr201.projects.robotsim.service.simulation/libs/canvas-viewer.jar</canvas-viewer-systemPath>
+				<projects-robotsim-systemPath>/home/bob/eclipse-workspace/fr.tp.slr201.projects.robotsim.service.simulation/libs/projects-robotsim.jar</projects-robotsim-systemPath>
 		<java.version>17</java.version>
+		<spring-boot.version>3.4.0</spring-boot.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -35,29 +38,31 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-
 		<dependency>
-		    <groupId>com.example</groupId>
+		    <groupId>fr.tp.inf112.projects</groupId>
 		    <artifactId>canvas-viewer</artifactId>
 		    <version>1.0</version>
-		    <scope>compile</scope>
 		</dependency>
+		<dependency>
+		    <groupId>fr.tp.inf112.projects</groupId>
+		    <artifactId>projects-robotsim</artifactId>
+		    <version>1.0</version>
+		</dependency>
+
+
+		
+		<dependency>
+		    <groupId>fr.tp</groupId>
+		    <artifactId>projects-robotsim</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${projects-robotsim-systemPath}</systemPath>
+		</dependency>
+		
 
 		<dependency>
 		    <groupId>ch.qos.logback</groupId>
 		    <artifactId>logback-classic</artifactId>
-		    <version>1.4.11</version> <!-- Version compatible avec Spring Boot 3.x -->
-		</dependency>
-
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-logging</artifactId>
-		    <exclusions>
-		        <exclusion>
-		            <groupId>ch.qos.logback</groupId>
-		            <artifactId>logback-classic</artifactId>
-		        </exclusion>
-		    </exclusions>
 		</dependency>
 
 
@@ -70,6 +75,30 @@
 
 	<build>
 		<plugins>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-assembly-plugin</artifactId>
+			  <configuration>
+			    <descriptorRefs>
+			      <descriptorRef>jar-with-dependencies</descriptorRef>
+			    </descriptorRefs>
+			    <archive>
+			      <manifest>
+			        <mainClass>com.example.demo.Application</mainClass>
+			      </manifest>
+			    </archive>
+			  </configuration>
+			  <executions>
+			    <execution>
+			      <id>make-assembly</id>
+			      <phase>package</phase>
+			      <goals>
+			        <goal>single</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

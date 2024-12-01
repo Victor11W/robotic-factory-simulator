@@ -1,17 +1,17 @@
 package com.example.demo;
 
-import fr.tp.inf112.projects.robotsim.server.RemoteFactoryPersistenceManager;
-import fr.tp.inf112.projects.canvas.model.Canvas;
-import fr.tp.inf112.projects.canvas.model.CanvasChooser;
+import fr.tp.inf112.projects.robotsim.app.SimulatorController;
+import fr.tp.inf112.projects.robotsim.model.Factory;
+import fr.tp.inf112.projects.robotsim.model.FactoryPersistenceManager;
 import fr.tp.inf112.projects.canvas.view.FileCanvasChooser;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 @RestController
@@ -19,75 +19,135 @@ import java.util.logging.Logger;
 public class MicroserviceController {
 
     private static final Logger logger = Logger.getLogger(MicroserviceController.class.getName());
-    private final RemoteFactoryPersistenceManager persistenceManager;
-    private final Map<String, Canvas> activeSimulations = new ConcurrentHashMap<>();
-    private final CanvasChooser canvasChooser;
 
-    public MicroserviceController() throws IOException {
-        // Initialisation du CanvasChooser
-        this.canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
+    // Map to store factories currently being simulated
+    private final Map<String, Factory> simulatedFactories = new HashMap<>();
+    private final FactoryPersistenceManager persistenceManager;
 
-        // Connexion au serveur de persistance
-        Socket socket = new Socket("localhost", 8080);
-        logger.info("Connected to the persistence server on localhost:8080.");
-
-        // Initialisation du RemoteFactoryPersistenceManager
-        this.persistenceManager = new RemoteFactoryPersistenceManager(canvasChooser, socket);
-        logger.info("RemoteFactoryPersistenceManager initialized successfully.");
+    public MicroserviceController() {
+        FileCanvasChooser canvasChooser = new FileCanvasChooser("factory", "Puck Factory");
+        this.persistenceManager = new FactoryPersistenceManager(canvasChooser);
     }
 
     /**
-     * Démarrer une simulation identifiée par son ID.
+     * Start simulating a factory model identified by its ID.
+     *
+     * @param factoryId the ID of the factory to simulate
+     * @return true if the simulation started successfully, false otherwise
      */
-    @PostMapping("/start/{id}")
-    public ResponseEntity<String> startSimulation(@PathVariable String id) {
+    @PostMapping("/start/{factoryId}")
+    public boolean startSimulation(@PathVariable String factoryId) {
         try {
-            Canvas canvas = persistenceManager.read(id);
-            if (canvas == null) {
-                logger.warning("Factory model not found for ID: " + id);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Simulation not found.");
+            logger.info("Starting simulation for factory ID: " + factoryId);
+
+            Factory factoryModel;
+
+            // Priorité : récupérer depuis le SocketServer
+            factoryModel = fetchFactoryFromSocketServer(factoryId);
+
+            if (factoryModel == null) {
+                logger.warning("Factory ID " + factoryId + " not found on SocketServer. Attempting to load from persistence.");
+                
+                // Si non trouvé, essayer avec le persistenceManager
+                factoryModel = (Factory) persistenceManager.read(factoryId);
+
+                if (factoryModel == null) {
+                    logger.severe("Factory model with ID " + factoryId + " not found.");
+                    return false;
+                }
             }
-            activeSimulations.put(id, canvas);
-            logger.info("Simulation started successfully for ID: " + id);
-            return ResponseEntity.ok("Simulation started.");
-        } catch (IOException e) {
-            logger.severe("Error starting simulation for ID: " + id + " - " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+
+            // Ajouter le modèle à la liste des simulations
+            simulatedFactories.put(factoryId, factoryModel);
+
+            // Démarrer la simulation
+            SimulatorController simulatorController = new SimulatorController(factoryModel, persistenceManager);
+            simulatorController.startAnimation();
+
+            logger.info("Simulation started for factory ID: " + factoryId);
+            return true;
+        } catch (Exception e) {
+            logger.severe("Failed to start simulation for factory ID: " + factoryId + ": " + e.getMessage());
+            return false;
         }
     }
 
+
     /**
-     * Obtenir l'état actuel d'une simulation.
+     * Retrieve the current state of a factory model identified by its ID.
+     *
+     * @param factoryId the ID of the factory
+     * @return the factory model currently being simulated, or null if not found
      */
-    @GetMapping("/{id}")
-    public ResponseEntity<Canvas> getSimulation(@PathVariable String id) {
-        Canvas canvas = activeSimulations.get(id);
-        if (canvas != null) {
-            logger.info("Returning simulation state for ID: " + id);
-            return ResponseEntity.ok(canvas);
-        } else {
-            logger.warning("Simulation not found for ID: " + id);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    @GetMapping("/retrieve/{factoryId}")
+    public Factory retrieveSimulation(@PathVariable String factoryId) {
+        logger.info("Retrieving simulation for factory ID: " + factoryId);
+        Factory factoryModel = simulatedFactories.get(factoryId);
+
+        if (factoryModel == null) {
+            logger.warning("Factory model with ID " + factoryId + " not found in active simulations.");
+            return null;
         }
+
+        logger.info("Successfully retrieved factory model for factory ID: " + factoryId);
+        return factoryModel;
     }
 
     /**
-     * Arrêter une simulation.
+     * Stop the simulation of a factory model identified by its ID.
+     *
+     * @param factoryId the ID of the factory to stop
+     * @return true if the simulation was stopped successfully, false otherwise
      */
-    @DeleteMapping("/stop/{id}")
-    public ResponseEntity<String> stopSimulation(@PathVariable String id) {
-        Canvas canvas = activeSimulations.remove(id);
-        if (canvas == null) {
-            logger.warning("Simulation not found for ID: " + id);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Simulation not found.");
+    @DeleteMapping("/stop/{factoryId}")
+    public boolean stopSimulation(@PathVariable String factoryId) {
+        logger.info("Stopping simulation for factory ID: " + factoryId);
+
+        Factory factoryModel = simulatedFactories.get(factoryId);
+        if (factoryModel == null) {
+            logger.warning("Factory model with ID " + factoryId + " not found.");
+            return false;
         }
-        try {
-            persistenceManager.persist(canvas);
-            logger.info("Simulation stopped and persisted successfully for ID: " + id);
-            return ResponseEntity.ok("Simulation stopped.");
-        } catch (IOException e) {
-            logger.severe("Error persisting simulation for ID: " + id + " - " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+
+        // Stop simulation
+        SimulatorController simulatorController = new SimulatorController(factoryModel, persistenceManager);
+        simulatorController.stopAnimation();
+
+        // Remove from the simulated factories map
+        simulatedFactories.remove(factoryId);
+        logger.info("Simulation stopped and removed for factory ID: " + factoryId);
+        return true;
+    }
+    
+    /**
+     * Fetch a factory model from the SocketServer using the factory ID.
+     *
+     * @param factoryId the ID of the factory to fetch
+     * @return the retrieved factory model, or null if not found
+     */
+    private Factory fetchFactoryFromSocketServer(String factoryId) {
+        try (Socket socket = new Socket("localhost", 8080);
+             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
+
+            // Envoyer l'ID de l'usine au SocketServer
+            out.writeObject(factoryId);
+            out.flush();
+
+            // Recevoir le modèle de l'usine depuis le SocketServer
+            Object response = in.readObject();
+            if (response instanceof Factory factoryModel) {
+                logger.info("Factory model retrieved successfully for ID: " + factoryId);
+                return factoryModel;
+            } else {
+                logger.warning("Unexpected response from SocketServer for ID: " + factoryId);
+                return null;
+            }
+
+        } catch (Exception e) {
+            logger.severe("Error communicating with SocketServer for factory ID " + factoryId + ": " + e.getMessage());
+            return null;
         }
     }
+
 }
