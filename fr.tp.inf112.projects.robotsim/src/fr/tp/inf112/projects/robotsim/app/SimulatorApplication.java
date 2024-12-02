@@ -97,11 +97,6 @@ public class SimulatorApplication {
 
 
 
-
-        // Démarrer la simulation
-        logger.info("Starting simulation...");
-        remoteSimulatorController.startAnimation();
-        logger.info("Simulation started.");
     }
 
 }

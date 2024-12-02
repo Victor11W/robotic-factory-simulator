@@ -9,7 +9,6 @@ import fr.tp.inf112.projects.robotsim.model.Factory;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -39,14 +38,13 @@ public class RemoteSimulatorController extends SimulatorController {
     @Override
     public void startAnimation() {
         try {
-        	logger.info(getCanvas().getId());
-        	String url = "http://" + microserviceBaseUrl + ":2000/simulation/start" + "?factoryPath=" +getCanvas().getId() ;
-        	
-        	HttpRequest request = HttpRequest.newBuilder()
-        	    .uri(URI.create(url)) // Utiliser URI.create pour éviter l'encodage
-        	    .POST(HttpRequest.BodyPublishers.noBody())
-        	    .build();
+            logger.info(getCanvas().getId());
+            String url = "http://" + microserviceBaseUrl + ":2000/simulation/start" + "?factoryPath=" + getCanvas().getId();
 
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .build();
 
             logger.info("Sending POST request to " + url);
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -54,6 +52,8 @@ public class RemoteSimulatorController extends SimulatorController {
             if (response.statusCode() == 200 && Boolean.parseBoolean(response.body())) {
                 logger.info("Simulation started successfully for factory ID: " + getCanvas().getId());
 
+                // Activer la simulation localement
+                ((Factory) getCanvas()).startSimulation();
                 // Appeler updateViewer pour synchroniser les données
                 updateViewer();
             } else {
@@ -72,22 +72,28 @@ public class RemoteSimulatorController extends SimulatorController {
     @Override
     public void stopAnimation() {
         try {
-            final URI uri = new URI("http", null, microserviceBaseUrl, 2000, "/simulation/stop/" + getCanvas().getId(), null, null);
+            String url = "http://" + microserviceBaseUrl + ":2000/simulation/stop" + "?factoryPath=" + getCanvas().getId();
+
             HttpRequest request = HttpRequest.newBuilder()
-                .uri(uri)
+                .uri(URI.create(url))
                 .DELETE() // DELETE request
                 .build();
 
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            logger.info("Response: " + response.statusCode() + " - " + response.body());
             if (response.statusCode() == 200 && Boolean.parseBoolean(response.body())) {
                 logger.info("Simulation stopped successfully for factory ID: " + getCanvas().getId());
+
+                // Arrêter la simulation localement
+                ((Factory) getCanvas()).stopSimulation();
             } else {
                 logger.warning("Failed to stop simulation for factory ID: " + getCanvas().getId());
             }
-        } catch (URISyntaxException | IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             logger.severe("Error stopping simulation: " + e.getMessage());
         }
     }
+
 
     /**
      * Retrieve the current state of the factory simulation.
@@ -96,21 +102,24 @@ public class RemoteSimulatorController extends SimulatorController {
      */
     public Factory getFactory() {
         try {
-            final URI uri = new URI("http", null, microserviceBaseUrl, 2000, "/simulation/retrieve/" + getCanvas().getId(), null, null);
+            final URI uri = new URI("http", null, microserviceBaseUrl, 2000, "/simulation/retrieve" + getCanvas().getId(), null, null);
             HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
-                .GET() // GET request
+                .GET()
                 .build();
+            logger.info("Canvas updated and observers notified.");
+            logger.info("Fetching factory state from URL: " + uri);
 
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
             if (response.statusCode() == 200) {
                 Factory factory = objectMapper.readValue(response.body(), Factory.class);
-                logger.info("Factory retrieved successfully: " + factory.toString());
+                logger.info("Factory retrieved successfully: ");
                 return factory;
             } else {
                 logger.warning("Failed to retrieve factory for ID: " + getCanvas().getId());
             }
-        } catch (URISyntaxException | IOException | InterruptedException e) {
+        } catch (Exception e) {
             logger.severe("Error retrieving factory: " + e.getMessage());
         }
         return null;
@@ -121,6 +130,7 @@ public class RemoteSimulatorController extends SimulatorController {
      */
     private void updateViewer() {
         new Thread(() -> {
+            logger.info("Starting updateViewer thread...");
             while (((Factory) getCanvas()).isSimulationStarted()) {
                 try {
                     Factory updatedFactory = getFactory();
@@ -136,8 +146,11 @@ public class RemoteSimulatorController extends SimulatorController {
                     logger.severe("Error updating viewer: " + e.getMessage());
                 }
             }
+            logger.info("Exiting updateViewer thread.");
         }).start();
     }
+
+
 
 
     /**
@@ -171,5 +184,6 @@ public class RemoteSimulatorController extends SimulatorController {
             factoryModel.addObserver(observer);
         }
         factoryModel.notifyObservers();
+        logger.info("Canvas updated and observers notified.");
     }
 }
